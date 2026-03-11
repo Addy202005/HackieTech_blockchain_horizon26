@@ -9,7 +9,7 @@ const [price,setPrice] = useState("")
 const [result,setResult] = useState("")
 
 // predefined traders
-const traders:any = {
+const traders = {
 "Trader A":"0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC",
 "Trader B":"0x70997970C51812dc3A010C7d01b50e0d17dc79C8"
 }
@@ -17,9 +17,9 @@ const traders:any = {
 // connect metamask
 async function connectWallet(){
 
-if((window as any).ethereum){
+if(window.ethereum){
 
-const accounts = await (window as any).ethereum.request({
+const accounts = await window.ethereum.request({
 method:"eth_requestAccounts"
 })
 
@@ -71,7 +71,7 @@ return(
 
 <div style={navbar}>
 
-<h2 style={{color:"#ff4d6d"}}>hechieTech Settlement</h2>
+<h2 style={{paddingLeft:"10px",color:"#ff4d6d"}}>HechieTech Settlement</h2>
 
 <button style={navBtn} onClick={connectWallet}>
 Connect MetaMask
@@ -104,7 +104,7 @@ Connect MetaMask
 
 <h2>Place Order</h2>
 
-{/* Buyer address */}
+{/* Buyer */}
 
 <input
 value={buyer}
@@ -112,10 +112,10 @@ readOnly
 style={input}
 />
 
-{/* Seller dropdown */}
+{/* Seller */}
 
 <select
-style={input}
+style={select}
 onChange={(e)=>setSeller(e.target.value)}
 >
 
@@ -152,7 +152,9 @@ onChange={(e)=>setPrice(e.target.value)}
 Execute Trade
 </button>
 
-<p style={{marginTop:"20px",whiteSpace:"pre-line"}}>{result}</p>
+<p style={{marginTop:"20px",whiteSpace:"pre-line"}}>
+{result}
+</p>
 
 </div>
 
@@ -169,7 +171,7 @@ Execute Trade
 export default App
 
 
-// styles
+// ================= Styles =================
 
 const container={
 background:"#020617",
@@ -185,9 +187,10 @@ background:"#0f172a"
 }
 
 const navBtn={
-padding:"10px 15px",
-background:"#2563eb",
+padding:"5px 5px",
+background:"#1054e7e4",
 border:"none",
+borderRadius:"10px",
 color:"white",
 cursor:"pointer"
 }
@@ -214,29 +217,47 @@ cursor:"pointer"
 }
 
 const main={
+display:"flex",
+justifyContent:"center",
+alignItems:"center",
 flex:1,
-padding:"40px"
+padding:"40px",
+minHeight:"80vh"
 }
 
 const card={
 width:"420px",
 background:"#1e293b",
 padding:"30px",
-borderRadius:"10px"
+borderRadius:"15px",
+display:"flex",
+flexDirection:"column",
+alignItems:"center"
 }
 
 const input={
+width:"95%",
+padding:"10px",
+marginTop:"10px",
+borderRadius:"10px",
+border:"none"
+}
+
+const select={
 width:"100%",
 padding:"10px",
-marginTop:"10px"
+marginTop:"10px",
+borderRadius:"10px",
+border:"none"
 }
 
 const tradeBtn={
-width:"100%",
+width:"85%",
 marginTop:"20px",
 padding:"12px",
-background:"#16a34a",
+background:"#07a842cf",
 border:"none",
+borderRadius:"10px",
 color:"white",
 cursor:"pointer"
 }
